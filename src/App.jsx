@@ -1,6 +1,17 @@
+import Header from "./components/Header";
+import TodoList from "./components/TodoList";
+import Tabs from "./components/Tabs";
+import TodoInput from "./components/TodoInput";
+
 function App() {
-  let test = "Testing";
-  return <div>{test}</div>;
+  return (
+    <div>
+      <Header />
+      <Tabs />
+      <TodoList />
+      <TodoInput />
+    </div>
+  );
 }
 
 export default App;
