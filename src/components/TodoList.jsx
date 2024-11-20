@@ -1,10 +1,14 @@
 import TodoCard from "./TodoCard";
 
-function TodoList() {
+function TodoList(props) {
+  const { todos } = props;
+  const tab = "Todas";
   return (
-    <div>
-      <TodoCard />
-    </div>
+    <>
+      {todos.map((todo, todoIndex) => {
+        return <TodoCard key={todoIndex} todoIndex={todoIndex} {...props} />;
+      })}
+    </>
   );
 }
 
