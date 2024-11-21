@@ -10,8 +10,6 @@ function TodoList(props) {
       ? todos.filter((val) => val.complete)
       : todos.filter((val) => !val.complete);
 
-  console.log(filterTodosList);
-
   return (
     <>
       {filterTodosList.map((todo, todoIndex) => {

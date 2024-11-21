@@ -2,21 +2,24 @@ import Header from "./components/Header";
 import TodoList from "./components/TodoList";
 import Tabs from "./components/Tabs";
 import TodoInput from "./components/TodoInput";
+import { useState } from "react";
 
 function App() {
-  const todos = [
+  const [todos, setTodos] = useState([
     { input: "Hola, añade tu primera tarea", complete: true },
-    { input: "Ir a comprar frutas", complete: false },
-    { input: "Aprender docker", complete: false },
-    { input: "Llamar al abuelo", complete: true },
-  ];
+  ]);
+
+  function handleAddTodo(newTodo) {
+    const newTodoList = [...todos, { input: newTodo, complete: false }];
+    setTodos(newTodoList);
+  }
 
   return (
     <>
       <Header todos={todos} />
       <Tabs todos={todos} />
       <TodoList todos={todos} />
-      <TodoInput />
+      <TodoInput handleAdd={handleAddTodo} />
     </>
   );
 }
