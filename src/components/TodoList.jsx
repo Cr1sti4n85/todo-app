@@ -2,11 +2,20 @@ import TodoCard from "./TodoCard";
 
 function TodoList(props) {
   const { todos } = props;
-  const tab = "Todas";
+  const tab = "Completadas";
+  const filterTodosList =
+    tab === "Todas"
+      ? todos
+      : tab === "Completadas"
+      ? todos.filter((val) => val.complete)
+      : todos.filter((val) => !val.complete);
+
+  console.log(filterTodosList);
+
   return (
     <>
-      {todos.map((todo, todoIndex) => {
-        return <TodoCard key={todoIndex} todoIndex={todoIndex} {...props} />;
+      {filterTodosList.map((todo, todoIndex) => {
+        return <TodoCard key={todoIndex} todo={todo} />;
       })}
     </>
   );
