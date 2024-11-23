@@ -1,11 +1,16 @@
 function TodoCard(props) {
-  const { todo, handleDeleteTodo, todoIndex } = props;
+  const { todo, handleDeleteTodo, handleCompleteTodo, todoIndex } = props;
 
   return (
     <div>
       <p>{todo.input}</p>
       <div>
-        <button disabled={todo.complete}>
+        <button
+          onClick={() => {
+            handleCompleteTodo(todoIndex);
+          }}
+          disabled={todo.complete}
+        >
           <h6>Hecha ✔</h6>
         </button>
         <button
