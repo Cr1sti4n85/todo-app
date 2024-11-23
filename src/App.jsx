@@ -5,6 +5,8 @@ import TodoInput from "./components/TodoInput";
 import { useState } from "react";
 
 function App() {
+  const [selectedTab, setSelectedTab] = useState("Pendientes");
+
   const [todos, setTodos] = useState([
     { input: "Hola, añade tu primera tarea", complete: true },
   ]);
@@ -17,8 +19,12 @@ function App() {
   return (
     <>
       <Header todos={todos} />
-      <Tabs todos={todos} />
-      <TodoList todos={todos} />
+      <Tabs
+        todos={todos}
+        selectedTab={selectedTab}
+        setSelectedTab={setSelectedTab}
+      />
+      <TodoList todos={todos} selectedTab={selectedTab} />
       <TodoInput handleAdd={handleAddTodo} />
     </>
   );

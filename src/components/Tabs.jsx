@@ -1,5 +1,5 @@
 function Tabs(props) {
-  const { todos } = props;
+  const { todos, selectedTab, setSelectedTab } = props;
   const tabs = ["Todas", "Pendientes", "Completadas"];
   return (
     <nav>
@@ -11,13 +11,19 @@ function Tabs(props) {
             ? todos.filter((val) => !val.complete).length
             : todos.filter((val) => val.complete).length;
         return (
-          <button key={tabIndex}>
+          <button
+            onClick={() => {
+              setSelectedTab(tab);
+            }}
+            key={tabIndex}
+          >
             <h4>
               {tab} <span>({numOfTasks})</span>
             </h4>
           </button>
         );
       })}
+      <hr />
     </nav>
   );
 }

@@ -1,12 +1,11 @@
 import TodoCard from "./TodoCard";
 
 function TodoList(props) {
-  const { todos } = props;
-  const tab = "Completadas";
+  const { todos, selectedTab } = props;
   const filterTodosList =
-    tab === "Todas"
+    selectedTab === "Todas"
       ? todos
-      : tab === "Completadas"
+      : selectedTab === "Completadas"
       ? todos.filter((val) => val.complete)
       : todos.filter((val) => !val.complete);
 
