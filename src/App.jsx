@@ -16,6 +16,14 @@ function App() {
     setTodos(newTodoList);
   }
 
+  function handleCompleteTodo(index) {}
+
+  function handleDeleteTodo(index) {
+    const newTodoList = todos.filter((_, valIndex) => valIndex !== index);
+
+    setTodos(newTodoList);
+  }
+
   return (
     <>
       <Header todos={todos} />
@@ -24,7 +32,11 @@ function App() {
         selectedTab={selectedTab}
         setSelectedTab={setSelectedTab}
       />
-      <TodoList todos={todos} selectedTab={selectedTab} />
+      <TodoList
+        todos={todos}
+        selectedTab={selectedTab}
+        handleDeleteTodo={handleDeleteTodo}
+      />
       <TodoInput handleAdd={handleAddTodo} />
     </>
   );

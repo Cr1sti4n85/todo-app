@@ -1,5 +1,5 @@
 function TodoCard(props) {
-  const { todo } = props;
+  const { todo, handleDeleteTodo, todoIndex } = props;
 
   return (
     <div>
@@ -8,7 +8,11 @@ function TodoCard(props) {
         <button disabled={todo.complete}>
           <h6>Hecha ✔</h6>
         </button>
-        <button>
+        <button
+          onClick={() => {
+            handleDeleteTodo(todoIndex);
+          }}
+        >
           <h6>Borrar</h6>
         </button>
       </div>
