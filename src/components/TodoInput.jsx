@@ -3,7 +3,7 @@ import { useState } from "react";
 function TodoInput({ handleAdd }) {
   const [inputVal, setInputVal] = useState("");
   return (
-    <div>
+    <div className="input-container">
       <input
         value={inputVal}
         onChange={(e) => {

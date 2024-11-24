@@ -2,9 +2,9 @@ function TodoCard(props) {
   const { todo, handleDeleteTodo, handleCompleteTodo, todoIndex } = props;
 
   return (
-    <div>
+    <div className="card todo-item">
       <p>{todo.input}</p>
-      <div>
+      <div className="todo-buttons">
         <button
           onClick={() => {
             handleCompleteTodo(todoIndex);

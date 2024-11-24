@@ -2,7 +2,7 @@ function Tabs(props) {
   const { todos, selectedTab, setSelectedTab } = props;
   const tabs = ["Todas", "Pendientes", "Completadas"];
   return (
-    <nav>
+    <nav className="tab-container">
       {tabs.map((tab, tabIndex) => {
         const numOfTasks =
           tab === "Todas"
@@ -16,6 +16,9 @@ function Tabs(props) {
               setSelectedTab(tab);
             }}
             key={tabIndex}
+            className={
+              "tab-button " + (tab == selectedTab ? " tab-selected" : " ")
+            }
           >
             <h4>
               {tab} <span>({numOfTasks})</span>
