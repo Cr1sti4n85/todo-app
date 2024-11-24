@@ -2,7 +2,7 @@ import Header from "./components/Header";
 import TodoList from "./components/TodoList";
 import Tabs from "./components/Tabs";
 import TodoInput from "./components/TodoInput";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
   const [selectedTab, setSelectedTab] = useState("Pendientes");
@@ -14,6 +14,7 @@ function App() {
   function handleAddTodo(newTodo) {
     const newTodoList = [...todos, { input: newTodo, complete: false }];
     setTodos(newTodoList);
+    handleSaveData(newTodoList);
   }
 
   function handleCompleteTodo(index) {
@@ -24,13 +25,25 @@ function App() {
     newTodoList[index] = completedTodo;
 
     setTodos(newTodoList);
+    handleSaveData(newTodoList);
   }
 
   function handleDeleteTodo(index) {
     const newTodoList = todos.filter((_, valIndex) => valIndex !== index);
 
     setTodos(newTodoList);
+    handleSaveData(newTodoList);
   }
+
+  function handleSaveData(currentTodos) {
+    localStorage.setItem("todos", JSON.stringify({ todos: currentTodos }));
+  }
+
+  useEffect(() => {
+    if (!localStorage || !localStorage.getItem("todos")) return;
+    let db = JSON.parse(localStorage.getItem("todos"));
+    setTodos(db?.todos);
+  }, []);
 
   return (
     <>
